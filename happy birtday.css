@@ -1,0 +1,148 @@
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+p {
+  margin: 0 0;
+  position: absolute;
+  font: 16px Verdana;
+  color: #eee;
+  height: 25px;
+  top: calc(100vh - 30px);
+  text-shadow: 0 0 2px white;
+}
+p a {
+  text-decoration: none;
+  color: #aaa;
+}
+span {
+  font-size: 12px;
+}
+
+body {
+  overflow: hidden;
+}
+
+#cake {
+  position: absolute;
+  width: 360px; /* Adjust size to match text */
+  height: auto;
+  bottom: 50px; /* Position similar to text */
+  left: 50%; /* Center it */
+  transform: translateX(-50%);
+}
+
+body {
+  display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Aligns content to the bottom */
+    height: 100vh;
+    background-color: #111;
+    margin: 0;
+    padding-bottom: 20px; /* Adds some space at the bottom */
+}
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+
+.card {
+  width: 400px;
+  height: 400px;
+  margin-left: 145px; /* Adjust positioning */
+  perspective: 1000px; /* Enables 3D flipping */
+  cursor: pointer;
+  animation: slideInFade 3.8s ease-out; /* Slide in effect */
+}
+
+/* Card Inner (Handles Flip Effect) */
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d; /* Enables 3D effect */
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Flip Effect on Hover */
+.card:hover .card-inner {
+  transform: rotateY(180deg); /* Flips the card */
+}
+
+/* Front and Back Sides */
+.card-front, .card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden; /* Ensures only one side is visible */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Front Side (Cake Image) */
+.card-front {
+  background: white;
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* Back Side (Text) */
+.card-back {
+  background: linear-gradient(135deg, #7f15cb, #c04fd1);
+  transform: rotateY(180deg); /* Keeps the back side hidden initially */
+}
+
+.card-back h2 {
+  font-family: "Times New Roman", serif;
+  font-size: 2rem;
+  color: white;
+  text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.7);
+  text-align: center; /* Centers text horizontally */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ensures it takes full height for vertical centering */
+  width: 100%;
+}
+
+/* 🎬 Slide-In + Fade-In Animation */
+@keyframes slideInFade {
+  from {
+      transform: translateX(-100%); /* Start off-screen */
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0); /* Arrives at its position */
+      opacity: 1;
+  }
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px rgba(131, 125, 125, 0.7), 
+                 0 0 10px rgba(131, 125, 125, 0.7);
+  }
+  90% {
+    text-shadow: 0 0 15px rgba(131, 125, 125, 0.7), 
+                 0 0 25px rgba(131, 125, 125, 0.7);
+  }
+}
+
+.flip-card .flip-card-inner .flip-card-front h2,
+.flip-card .flip-card-inner .flip-card-back h2 {
+  animation: glow 3s infinite alternate ease-in-out; /* Slower glow */
+}
