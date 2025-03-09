@@ -53,8 +53,8 @@ body {
 
 
 .card {
-  width: 400px;
-  height: 400px;
+  width: 380px;
+  height: 350px;
   margin-left: 145px; /* Adjust positioning */
   perspective: 1000px; /* Enables 3D flipping */
   cursor: pointer;
